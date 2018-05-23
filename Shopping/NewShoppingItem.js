@@ -4,10 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 
-export class EditShoppingItem extends React.Component {
+export class NewShoppingItem extends React.Component {
 
     constructor(props){
         super(props);
+        //this.state = {item: this.props.item};
     }
 
     editItem(newName, newDescription, newQuantity, newImage){
@@ -15,9 +16,6 @@ export class EditShoppingItem extends React.Component {
     }
 
   render() {
-      const { navigation } = this.props;
-      const item = this.props.navigation.state.params.item;
-      //console.log("name"+name);
     return (
         <View style={styles.container}>
             <Icon
@@ -32,10 +30,10 @@ export class EditShoppingItem extends React.Component {
             color='#477998'
             onPress={() => console.log('Delete this')}
             />
-            <Text>{item.name}</Text>
-            <Text>{item.description}</Text>
-            <Text>{item.quantity}</Text>
-            <Text>{item.image}</Text>   
+            {/* <Text>{this.state.item.name}</Text>
+            <Text>{this.state.item.description}</Text>
+            <Text>{this.state.item.quantity}</Text>
+            <Text>{this.state.item.image}</Text>    */}
         </View>
     );
   }
@@ -43,16 +41,6 @@ export class EditShoppingItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    backgroundColor: '#C4D6B0',
-    borderColor: '#291F1E',
-    borderStyle: 'solid',
-    borderWidth: 2,
-    
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10,
   },
 });
 

@@ -6,15 +6,12 @@ import { ShoppingItem } from './ShoppingItem';
 
 export class ShoppingList extends React.Component {
 
-    static navigationOptions = {
-        title: 'Shopping List',
-    }
   render() {
     return (
     <View style={styles.container}>
         <View style={styles.container}>
             <ShoppingItem name='Apple' description='Red' quantity={2} image='imageurl' navigation={this.props.navigation}/>
-            <ShoppingItem name='Banana' description='Yellow' quantity={2} image='imageurl'/>
+            <ShoppingItem name='Banana' description='Yellow' quantity={2} image='imageurl' navigation={this.props.navigation}/>
         </View>
         <Icon          
           name= 'plus' 
@@ -22,7 +19,7 @@ export class ShoppingList extends React.Component {
           color= '#fff'
           containerStyle={{ backgroundColor: '#477998'}}
           raised  
-          onPress={() => console.log('New item')}
+          onPress={() => this.props.navigation.navigate('NewItem')}
         />
     </View>
     );

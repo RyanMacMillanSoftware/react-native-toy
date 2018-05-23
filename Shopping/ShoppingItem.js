@@ -22,21 +22,25 @@ export class ShoppingItem extends React.Component {
     return (
         <View style={styles.container}>
             <Icon
-            name='pencil'
-            type='entypo'
-            color='#477998'
-            onPress={() => this.props.navigation.navigate('EditItem')}
+                name='pencil'
+                type='entypo'
+                color='#477998'
+                onPress={() => {
+                    this.props.navigation.navigate('EditItem', {
+                        item: this.state,
+                    });
+                }}
             />
             <Icon
-            name='cross'
-            type='entypo'
-            color='#477998'
-            onPress={() => console.log('Delete this')}
+                name='cross'
+                type='entypo'
+                color='#477998'
+                onPress={() => console.log('Delete this')}
             />
             <Text>{this.state.name}</Text>
             <Text>{this.state.description}</Text>
             <Text>{this.state.quantity}</Text>
-            <Text>{this.state.image}</Text>   
+            <Text>{this.state.image}</Text>  
         </View>
     );
   }
