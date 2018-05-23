@@ -1,6 +1,5 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 

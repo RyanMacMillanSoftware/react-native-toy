@@ -11,7 +11,7 @@ export class ShoppingList extends React.Component {
     <View style={styles.container}>
         <View style={styles.container}>
             <ShoppingItem name='Apple' description='Red' quantity={2} image='imageurl' navigation={this.props.navigation}/>
-            <ShoppingItem name='Banana' description='Yellow' quantity={2} image='imageurl' navigation={this.props.navigation}/>
+            <ShoppingItem name='Banana' description='Yellow' quantity={3} image='imageurl' navigation={this.props.navigation}/>
         </View>
         <Icon          
           name= 'plus' 
