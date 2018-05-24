@@ -9,7 +9,7 @@ export class EditShoppingItem extends React.Component {
     constructor(props){
         super(props);
         const item = this.props.navigation.state.params.item;
-        this.state = {name: item.name, description: item.description, quantity: item.quantity, image: item.image};
+        this.state = {key: item.key, name: item.name, description: item.description, quantity: item.quantity, image: item.image};
     }
   render() {
     return (
@@ -51,9 +51,7 @@ export class EditShoppingItem extends React.Component {
                     if ((this.state.name == '') || (this.state.description == '') || (this.state.image == '')){
                         console.log('Invalid input')
                     } else{
-                        this.props.navigation.navigate('Home', {
-                            item: this.state,
-                        });
+                        this.props.navigation.navigate('Home', {key: this.state.key,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
                     }
                 }}
                 title="EDIT ITEM"

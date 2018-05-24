@@ -7,7 +7,7 @@ export class ShoppingItem extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {name: this.props.name, description: this.props.description,
+        this.state = {key: this.props.name, name: this.props.name, description: this.props.description,
                         quantity: this.props.quantity, image: this.props.image};
     }
 
