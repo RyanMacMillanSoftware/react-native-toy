@@ -34,10 +34,10 @@ export class ShoppingList extends React.Component {
           if (this.state.shopping[index].key === nextProps.navigation.state.params.key){
             foundMatch = true;
             this.state.shopping.splice(index,1);
-            this.state.shopping.push({ key: nextProps.navigation.state.params.key, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
+            this.state.shopping.push({ key: nextProps.navigation.state.params.name, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
         }
         }
-        if (foundMatch === false){  
+        if (foundMatch === false){ 
           this.state.shopping.push({ key: nextProps.navigation.state.params.key, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
         }
       }
