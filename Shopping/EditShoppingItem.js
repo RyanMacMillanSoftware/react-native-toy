@@ -51,7 +51,7 @@ export class EditShoppingItem extends React.Component {
                     if ((this.state.name == '') || (this.state.description == '') || (this.state.image == '')){
                         console.log('Invalid input')
                     } else{
-                        this.props.navigation.navigate('Home', {key: this.state.key,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
+                        this.props.navigation.navigate('Home', {command: 'Edit', key: this.state.key,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
                     }
                 }}
                 title="EDIT ITEM"

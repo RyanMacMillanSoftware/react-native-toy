@@ -7,7 +7,7 @@ export class ShoppingItem extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {key: this.props.name, name: this.props.name, description: this.props.description,
+        this.state = {index: this.props.index, key: this.props.name, name: this.props.name, description: this.props.description,
                         quantity: this.props.quantity, image: this.props.image};
     }
 
@@ -26,6 +26,7 @@ export class ShoppingItem extends React.Component {
                 color='#477998'
                 onPress={() => {
                     this.props.navigation.navigate('EditItem', {
+                        command: 'Edit',
                         item: this.state,
                     });
                 }}
@@ -34,7 +35,12 @@ export class ShoppingItem extends React.Component {
                 name='cross'
                 type='entypo'
                 color='#477998'
-                onPress={() => console.log('Delete this')}
+                onPress={() => {
+                    this.props.navigation.navigate('Home', {
+                        command: 'Delete',
+                        item: this.state,
+                    });
+                }}
             />
             <Text>{this.state.name}</Text>
             <Text>{this.state.description}</Text>

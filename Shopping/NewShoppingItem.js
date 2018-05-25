@@ -64,7 +64,7 @@ export class NewShoppingItem extends React.Component {
                                 console.log('Invalid input')
                             } else{
                                 
-                                this.props.navigation.navigate('Home', {key: this.state.name,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
+                                this.props.navigation.navigate('Home', {command:'New', key: this.state.name,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
                             }
                         }}
                         title="ADD ITEM"
