@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, TextInput, StyleSheet, Text, View, Button, CameraRoll } from 'react-native';
+import { AppRegistry, TextInput, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import NumericInput from 'react-native-numeric-input';
 import shopping from './ShoppingList';
@@ -9,12 +9,18 @@ export class NewShoppingItem extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {name: '', description: '', quantity: 1, image: ''}
+        this.state = {name: null, description: '', quantity: 1, image: ''}
     }
+
+    componentWillReceiveProps(nextProps){
+        if (typeof nextProps.navigation.state.params.photo !== 'undefined'){
+          this.state = nextProps.navigation.state.params.state;
+          this.setState({ image: nextProps.navigation.state.params.photo.uri});
+        }
+      }
 
     render() {
         return (
-            
                 <View style={styles.container}>
                     <Text>Name</Text>
                     <TextInput
@@ -40,10 +46,18 @@ export class NewShoppingItem extends React.Component {
                     value={this.state.quantity}
                     /> 
                     
-                    <Text>Image</Text>
+                    <Text>Image URL</Text>
+                    <TextInput
+                    style={{borderColor: '#d9d9d9', borderWidth: 1, backgroundColor: '#f2f2f2'}}
+                    onChangeText = {(text) => this.setState({image: text})}
+                    />  
+                    <Image 
+                    style={{width: 100, height:100}}
+                    source = {{uri: this.state.image}}
+                    />
                     <Button
-                        onPress={() => {this.props.navigation.navigate('Camera');}}
-                        title="TAKE PHOTO"
+                        onPress={() => {this.props.navigation.navigate('Camera', {returnScreen: 'NewItem', state: this.state});}}
+                        title="OR TAKE PHOTO"
                     />
                     <Button
                         onPress={() => {

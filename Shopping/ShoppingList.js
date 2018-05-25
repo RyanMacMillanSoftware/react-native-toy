@@ -4,11 +4,8 @@ import { StyleSheet, Text, View, FlatList, SectionList } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
 import { ShoppingItem } from './ShoppingItem';
 
-var sectionShoppingList = [ { title: 'Apple', key: 'Apple', data: [{ name: 'Apple', description: 'Green', quantity: 2, image: 'image'}]}, 
-                  { title: 'Banana', key: 'Banana', data: [{name: 'Banana', description: 'Yellow', quantity: 3, image: 'imageurl' }]} ];
-
-var shoppingList = [ { key: 'Apple', name: 'Apple', description: 'Green', quantity: 2, image: 'image'}, 
-                  { key: 'Banana', name: 'Banana', description: 'Yellow', quantity: 3, image: 'imageurl'} ];
+var shoppingList = [ { key: 'Apple', name: 'Apple', description: 'Green', quantity: 2, image: 'file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fshopping-1d837c02-1641-4163-930f-7d216154bb5b/Camera/5d885f95-8259-4972-8a51-36b6eb914ada.jpg'}, 
+                  { key: 'Banana', name: 'Banana', description: 'Yellow', quantity: 3, image: 'file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fshopping-1d837c02-1641-4163-930f-7d216154bb5b/Camera/5d885f95-8259-4972-8a51-36b6eb914ada.jpg'} ];
 
 
 export class ShoppingList extends React.Component {
@@ -26,8 +23,11 @@ export class ShoppingList extends React.Component {
         for(index in this.state.shopping){
           if (this.state.shopping[index].key === nextProps.navigation.state.params.key){
             foundMatch = true;
+            console.log("oldImage: "+this.state.shopping[index].image);
             this.state.shopping.splice(index,1);
+            console.log("newImage: "+nextProps.navigation.state.params.image);
             this.state.shopping.push({ key: nextProps.navigation.state.params.name, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
+            console.log("newSavedImage: "+this.state.shopping[this.state.shopping.length-1].image);            
           }
         }
         if (foundMatch === false){ 

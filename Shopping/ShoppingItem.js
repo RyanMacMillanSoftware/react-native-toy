@@ -42,9 +42,13 @@ export class ShoppingItem extends React.Component {
                     });
                 }}
             />
-            <Text>{this.state.name}</Text>
+            <Text style={{fontWeight: 'bold'}}>{this.state.name}</Text>
             <Text>{this.state.description}</Text>
-            <Text>{this.state.quantity}</Text> 
+            <Text>x{this.state.quantity}</Text>
+            <Image 
+                style={{width: 100, height:100}}
+                source = {{uri: this.state.image}}
+            /> 
         </View>
     );
   }
