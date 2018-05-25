@@ -41,23 +41,10 @@ export class NewShoppingItem extends React.Component {
                     /> 
                     
                     <Text>Image</Text>
-                    <TextInput
-                    style={{borderColor: '#d9d9d9', borderWidth: 1, backgroundColor: '#f2f2f2'}}
-                    onChangeText = {(text) => this.setState({image: text})}
-                    />  
-                    {/* <Button
-                        onPress={() => {
-                            CameraRoll.getPhotos({
-                              first: 1,
-                              assetType: 'All'
-                            })
-                            .then(r => { 
-                                this.setState({ image: r.edges })
-                                console.log(this.state.image);                            
-                            })
-                          }}
-                        title="ADD IMAGE"
-                    /> */}
+                    <Button
+                        onPress={() => {this.props.navigation.navigate('Camera');}}
+                        title="TAKE PHOTO"
+                    />
                     <Button
                         onPress={() => {
                             if ((this.state.name == '') || (this.state.description == '') || (this.state.image == '')){

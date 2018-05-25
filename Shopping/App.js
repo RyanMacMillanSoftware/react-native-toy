@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ShoppingList } from './ShoppingList';
 import { EditShoppingItem } from './EditShoppingItem';
 import { NewShoppingItem } from './NewShoppingItem';
+import { CameraComponent } from './CameraComponent'
 
 export default class App extends React.Component {
 
@@ -26,6 +27,10 @@ const Screens = createStackNavigator({
   NewItem: { 
      screen: NewShoppingItem,
      title: 'New Item'
+    },
+Camera: {
+    screen: CameraComponent,
+    title: 'Take a photo'
     },
 },
 {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
+import { AppRegistry, StyleSheet, Image, Text, View, Button } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 
@@ -44,8 +44,7 @@ export class ShoppingItem extends React.Component {
             />
             <Text>{this.state.name}</Text>
             <Text>{this.state.description}</Text>
-            <Text>{this.state.quantity}</Text>
-            <Text>{this.state.image}</Text>  
+            <Text>{this.state.quantity}</Text> 
         </View>
     );
   }
@@ -54,7 +53,7 @@ export class ShoppingItem extends React.Component {
 const styles = StyleSheet.create({
   container: {
     //flex: 1,
-    backgroundColor: '#C4D6B0',
+    //backgroundColor: '#C4D6B0',
     borderColor: '#291F1E',
     borderStyle: 'solid',
     borderWidth: 2,
