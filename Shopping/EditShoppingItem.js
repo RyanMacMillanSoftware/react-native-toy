@@ -31,9 +31,10 @@ export class EditShoppingItem extends React.Component {
             
             <Text>Description</Text>
             <TextInput
-            style={{borderColor: '#d9d9d9', borderWidth: 1, backgroundColor: '#f2f2f2'}}
-            onChangeText = {(text) => this.setState({description: text})}
-            value={this.state.description}
+                style={{ borderColor: '#d9d9d9', borderWidth: 1, backgroundColor: '#f2f2f2' }}
+                onChangeText={(text) => this.setState({ description: text })}
+                value={this.state.description}
+                multiline={true}
             />  
             
             <Text>Quantity</Text>
@@ -66,7 +67,7 @@ export class EditShoppingItem extends React.Component {
                     if ((this.state.name == '') || (this.state.description == '') || (this.state.image == '')){
                         console.log('Invalid input')
                     } else{
-                        this.props.navigation.navigate('Home', {command: 'Edit', key: this.state.key,name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
+                        this.props.navigation.navigate('Home', { command: 'Edit', key: this.state.key, name: this.state.name, description: this.state.description, quantity: this.state.quantity, image: this.state.image });
                     }
                 }}
                 title="SAVE CHANGES"

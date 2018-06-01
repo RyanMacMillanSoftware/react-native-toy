@@ -31,7 +31,8 @@ export class NewShoppingItem extends React.Component {
                     <Text>Description</Text>
                     <TextInput
                     style={{borderColor: '#d9d9d9', borderWidth: 1, backgroundColor: '#f2f2f2'}}
-                    onChangeText = {(text) => this.setState({description: text})}
+                    onChangeText={(text) => this.setState({ description: text })}
+                    multiline={true}
                     />  
                     
                     <Text>Quantity</Text>
