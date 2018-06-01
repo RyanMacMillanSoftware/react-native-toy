@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import { StyleSheet, Text, View, FlatList, SectionList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, SectionList, AsyncStorage } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
 import { ShoppingItem } from './ShoppingItem';
 
@@ -10,12 +10,26 @@ var shoppingList = [ { key: 'Apple', name: 'Apple', description: 'Green', quanti
 
 export class ShoppingList extends React.Component {
 
+    state = {
+        shopping: ''
+    }
+
   constructor(props){
-    super(props);
-    this.state = {shopping: shoppingList}
+      super(props);
+        AsyncStorage.getItem('shopping').then((value) => {
+            console.log("value: " + value);
+            if (value == null) {
+                console.log("Here");
+                this.setState({ shopping: shoppingList });
+            }
+            else {
+                this.setState({ shopping: JSON.parse(value) });
+            }
+        });
+
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     if (typeof nextProps.navigation.state.params !== "undefined"){
       const command = nextProps.navigation.state.params.command ;
       if(command === "New" || command === "Edit"){
@@ -23,11 +37,11 @@ export class ShoppingList extends React.Component {
         for(index in this.state.shopping){
           if (this.state.shopping[index].key === nextProps.navigation.state.params.key){
             foundMatch = true;
-            console.log("oldImage: "+this.state.shopping[index].image);
+            //console.log("oldImage: "+this.state.shopping[index].image);
             this.state.shopping.splice(index,1);
-            console.log("newImage: "+nextProps.navigation.state.params.image);
+            //console.log("newImage: "+nextProps.navigation.state.params.image);
             this.state.shopping.push({ key: nextProps.navigation.state.params.name, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
-            console.log("newSavedImage: "+this.state.shopping[this.state.shopping.length-1].image);            
+            //console.log("newSavedImage: "+this.state.shopping[this.state.shopping.length-1].image);            
           }
         }
         if (foundMatch === false){ 
@@ -41,6 +55,12 @@ export class ShoppingList extends React.Component {
           }
         }
       }
+      }
+    try {
+        AsyncStorage.setItem('shopping', JSON.stringify(this.state.shopping));
+    }
+    catch (error) {
+        console.log("set data error: " + error);
     }
   }
 
