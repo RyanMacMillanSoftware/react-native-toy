@@ -29,17 +29,4 @@
         "react-navigation": "^2.0.1",
         "redux": "^4.0.0"
     },
-    "expo": {
-        "name": "Shopping List",
-        "icon": "",
-        "version": "1.0.0",
-        "slug": "your-app-slug",
-        "sdkVersion": "XX.0.0",
-        "ios": {
-            "bundleIdentifier": "com.750.shoppinglist"
-        },
-        "android": {
-            "package": "com.750.shoppinglist"
-        }
-    }
 }
