@@ -1,4 +1,4 @@
-#ShoppingList App
+# ShoppingList App
 
 A project for SOFTENG750. Experimenting with React Native. 
 
@@ -6,7 +6,7 @@ Troubleshooting in this README is from the "Create React Native App" generated R
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-##Before running
+## Before running
 
 Access the Shopping directory in terminal. 
 
