@@ -5,18 +5,19 @@ import { Header, Icon } from 'react-native-elements';
 import { ShoppingItem } from './ShoppingItem';
 
 var shoppingList = [{ key: 'Apple', name: 'Apple', description: 'Red', quantity: 2, image: 'https://images-na.ssl-images-amazon.com/images/I/918YNa3bAaL._SL1500_.jpg'}, 
-    { key: 'Banana', name: 'Banana', description: 'Yellow', quantity: 3, image: 'file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fshopping-1d837c02-1641-4163-930f-7d216154bb5b/Camera/5d885f95-8259-4972-8a51-36b6eb914ada.jpg'} ];
+    { key: 'Banana', name: 'Banana', description: 'Yellow', quantity: 3, image: 'https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL._SL1500_.jpg'} ];
 
 
 export class ShoppingList extends React.Component {
 
     state = {
-        shopping: ''
+        shopping: '',
+        refresh: true
     }
 
   constructor(props){
       super(props);
-        AsyncStorage.getItem('shopping').then((value) => {
+      AsyncStorage.getItem('shopping').then((value) => {
             if (value == null) {
                 this.setState({ shopping: shoppingList });
             }
@@ -28,9 +29,10 @@ export class ShoppingList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.navigation.state.params !== "undefined"){
+      if (typeof nextProps.navigation.state.params !== "undefined") {
+          this.setState({ refresh: !this.state.refresh });
       const command = nextProps.navigation.state.params.command ;
-      if(command === "New" || command === "Edit"){
+      if (command === "New" || command === "Edit") {
         let foundMatch = false;
         for(index in this.state.shopping){
           if (this.state.shopping[index].key === nextProps.navigation.state.params.key){
@@ -43,7 +45,7 @@ export class ShoppingList extends React.Component {
           this.state.shopping.push({ key: nextProps.navigation.state.params.key, name: nextProps.navigation.state.params.name, description: nextProps.navigation.state.params.description, quantity: nextProps.navigation.state.params.quantity, image: nextProps.navigation.state.params.image });
         }
       }
-      else if (command === "Delete"){
+      else if (command === "Delete") {
         for(index in this.state.shopping){
           if (this.state.shopping[index].key === nextProps.navigation.state.params.item.key){
             this.state.shopping.splice(index,1)
@@ -57,14 +59,16 @@ export class ShoppingList extends React.Component {
     catch (error) {
         console.log("set data error: " + error);
     }
+    
   }
 
   render() {
+
     return (
     <View style={styles.container}>
       <FlatList
         data = {this.state.shopping}
-        extraData={Math.random()}
+        extraData={this.state.refresh}
         renderItem={({item, index}) => <ShoppingItem index={index} name={item.name} description={item.description} quantity={item.quantity} image={item.image} navigation={this.props.navigation}/>}
       />
         <Icon          
