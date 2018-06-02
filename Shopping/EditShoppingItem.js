@@ -12,8 +12,8 @@ export class EditShoppingItem extends React.Component {
         this.state = {key: item.key, name: item.name, description: item.description, quantity: item.quantity, image: item.image};
     }
 
-    componentWillReceiveProps(nextProps){
-        if (typeof nextProps.navigation.state.params.photo !== 'undefined'){
+    componentWillReceiveProps(nextProps) {
+;        if (typeof nextProps.navigation.state.params.photo !== 'undefined'){
           this.state = nextProps.navigation.state.params.state;
           this.setState({ image: nextProps.navigation.state.params.photo.uri});
         }

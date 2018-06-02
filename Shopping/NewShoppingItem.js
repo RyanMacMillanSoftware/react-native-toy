@@ -9,12 +9,12 @@ export class NewShoppingItem extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {name: null, description: '', quantity: 1, image: ''}
+        this.state = { name: null, description: '', quantity: 1, image: 'https://cdnimg.webstaurantstore.com/images/products/main/632/3814/supermarket-grocery-shopping-cart.jpg'}
     }
 
-    componentWillReceiveProps(nextProps){
-        if (typeof nextProps.navigation.state.params.photo !== 'undefined'){
-          this.state = nextProps.navigation.state.params.state;
+    componentWillReceiveProps(nextProps) {
+        if (typeof nextProps.navigation.state.params !== 'undefined'){
+          this.setState(nextProps.navigation.state.params.state);
           this.setState({ image: nextProps.navigation.state.params.photo.uri});
         }
       }
